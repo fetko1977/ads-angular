@@ -1,0 +1,3 @@
+adsApp.controller('MainController', function($scope){
+    // TODO ....
+});
