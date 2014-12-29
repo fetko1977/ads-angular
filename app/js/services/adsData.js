@@ -1,11 +1,12 @@
 adsApp.factory('MainData', function($http, $log){
     return {
-        getAllAds : function(success){
-            $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/ads?pagesize=10&startpage=1'})
-                .success(function(data, status, headers, config) {
+        getAllAds : function(success, pageNumber){
+            var adsUrl = 'http://softuni-ads.azurewebsites.net/api/ads?pagesize=10&startpage=';
+            $http({method:'GET', url: adsUrl + pageNumber})
+                .success(function(data) {
                     success(data);
                 }).
-                error(function(data, status, headers, config) {
+                error(function(data) {
                     $log.warn(data);
                 });
         },

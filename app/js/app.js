@@ -1,4 +1,4 @@
-var adsApp = angular.module('adsApp', ['ngRoute'])
+var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPagination'])
 .config(function($routeProvider){
         $routeProvider.when('/',
             {
@@ -17,4 +17,8 @@ var adsApp = angular.module('adsApp', ['ngRoute'])
         );
         $routeProvider.otherwise({redirectTo: '/'});
     });
+
+adsApp.config(function(paginationTemplateProvider) {
+    paginationTemplateProvider.setPath('templates/dirPagination.tpl.html');
+});
 
