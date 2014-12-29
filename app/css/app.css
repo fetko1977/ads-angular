@@ -1,0 +1,14 @@
+.ads-left-aside {
+
+}
+
+.ads-left-aside p {
+    text-align: center;
+    color: #bf3e11;
+}
+
+.ads-left-aside a {
+    display: block;
+    margin: 1% auto;
+    width: 50%;
+}

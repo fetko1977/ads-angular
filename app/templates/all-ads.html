@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-lg-3 ads-left-aside">
+        <p>To publish a new ad, please login</p>
+        <a href="/login" class="btn btn-success">Login</a>
+        <a href="/register" class="btn btn-success">Register</a>
+    </div>
+    <div class="col-lg-6">
+        <ul>
+            <li ng-repeat="ad in data.ads">
+                {{ ad.title }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+</div>
