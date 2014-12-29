@@ -1,7 +1,12 @@
-.ads-left-aside {
+/*------------Common styling for elements-------------------------*/
 
+img {/*---Make image responsive by default----------------*/
+    display: block;
+    height: auto;
+    max-width: 100%;
 }
 
+/*----------Left sidebar with login and register -----------------*/
 .ads-left-aside p {
     text-align: center;
     color: #bf3e11;
@@ -11,4 +16,24 @@
     display: block;
     margin: 1% auto;
     width: 50%;
+}
+
+/*-----------Styling for li element containing add entry----------------------------*/
+.list-softuniads {
+    list-style: none;
+}
+
+.sofuniads-entry {
+    background: #bf3e11;
+    margin: 1% 0;
+    color: #ffffff;
+    padding: 1%;
+    border: solid 2px black;
+    -webkit-box-shadow:  1px 1px 3px black;
+    -moz-box-shadow:  1px 1px 3px black;
+    box-shadow:  1px 1px 3px black;
+}
+
+.sofuniads-entry h3 {
+    margin: 0 0 1% 0;
 }
