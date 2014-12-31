@@ -1,8 +1,16 @@
 adsApp.factory('MainData', function($http, $log){
     return {
-        getAllAds : function(success, pageNumber){
-            var adsUrl = 'http://softuni-ads.azurewebsites.net/api/ads?pagesize=10&startpage=';
-            $http({method:'GET', url: adsUrl + pageNumber})
+        getAllAds : function(success, pageNumber, categoryId, townId){
+            var adsUrl = 'http://softuni-ads.azurewebsites.net/api/ads?pagesize=10&startpage=' + pageNumber;
+            if(categoryId){
+                adsUrl += '&categoryId=' + categoryId;
+            }
+
+            if(townId){
+                adsUrl += '&townId=' + townId;
+            }
+
+            $http({method:'GET', url: adsUrl})
                 .success(function(data) {
                     success(data);
                 }).
@@ -10,21 +18,21 @@ adsApp.factory('MainData', function($http, $log){
                     $log.warn(data);
                 });
         },
-        getAdsCategories : function(success){
+        getCategories : function(success){
             $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/categories'})
-                .success(function(data, status, headers, config) {
+                .success(function(data) {
                     success(data);
                 }).
-                error(function(data, status, headers, config) {
+                error(function(data) {
                     $log.warn(data);
                 });
         },
-        getAdsTowns : function(success){
+        getTowns : function(success){
             $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/towns'})
-                .success(function(data, status, headers, config) {
+                .success(function(data) {
                     success(data);
                 }).
-                error(function(data, status, headers, config) {
+                error(function(data) {
                     $log.warn(data);
                 });
         }

@@ -18,6 +18,7 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPa
         $routeProvider.otherwise({redirectTo: '/'});
     });
 
+// Added set of the template path for pagination template
 adsApp.config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('templates/dirPagination.tpl.html');
 });

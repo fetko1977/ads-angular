@@ -37,3 +37,10 @@ img {/*---Make image responsive by default----------------*/
 .sofuniads-entry h3 {
     margin: 0 0 1% 0;
 }
+
+/*-------------------Filter Styling------------------------------------*/
+
+.active {
+    font-weight: bold;
+    color: #bf3e11;
+}
