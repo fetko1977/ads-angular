@@ -4,7 +4,7 @@ adsApp.factory('RegisterData', function($http, $log){
             var url = 'http://softuni-ads.azurewebsites.net/api/user/register';
             $http({method:'POST', url: url, data: user})
                 .success(function(data) {
-                    console.log(data);
+                    success(data);
                 }).
                 error(function(data) {
                     $log.warn(data);
