@@ -1,4 +1,5 @@
-adsApp.controller('MainController', function($scope, MainData){
+adsApp.controller('MainController', function($scope, MainData, $rootScope){
+
     //Pagination starts here
     var pageNumber = 1;
     var categoryId, townId;
@@ -46,7 +47,6 @@ adsApp.controller('MainController', function($scope, MainData){
     });
 
     $scope.isSelectedCategory = function(element){
-        console.log(element);
         return $scope.selectedCategory === element;
     };
 
@@ -55,11 +55,18 @@ adsApp.controller('MainController', function($scope, MainData){
     };
 
     $scope.isSelectedTown = function(element){
-        console.log(element);
         return $scope.selectedTown === element;
     };
 
     $scope.setActiveTown = function(element){
         $scope.selectedTown = element;
     };
+
+    $rootScope.isLoggedIn = function (){
+        if(!$rootScope.globals.currentUser){
+            return false;
+        }
+
+        return true;
+    }
 });
