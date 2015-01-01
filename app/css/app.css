@@ -44,3 +44,11 @@ img {/*---Make image responsive by default----------------*/
     font-weight: bold;
     color: #bf3e11;
 }
+
+
+/*------------User Message in the header top styling ----------------------*/
+
+.current-user-msg {
+    color: #ffffff;
+    padding: 1% 0 0 0;
+}

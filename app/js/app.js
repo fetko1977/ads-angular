@@ -1,8 +1,9 @@
-var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPagination'])
+var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPagination', 'ngCookies'])
 .config(function($routeProvider){
         $routeProvider.when('/',
             {
-                templateUrl:'templates/all-ads.html'
+                templateUrl:'templates/all-ads.html',
+                controller: 'MainController'
             }
         );
         $routeProvider.when('/login',
@@ -15,6 +16,11 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPa
                 templateUrl:'templates/register.html'
             }
         );
+        $routeProvider.when('/user',
+            {
+                templateUrl:'templates/userhome.html'
+            }
+        );
         $routeProvider.otherwise({redirectTo: '/'});
     });
 
@@ -23,3 +29,15 @@ adsApp.config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('templates/dirPagination.tpl.html');
 });
 
+adsApp.run(['$rootScope', '$location', '$cookieStore', '$http',
+    function ($rootScope, $location, $cookieStore) {
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookieStore.get('globals') || {};
+
+        $rootScope.$on('$locationChangeStart', function () {
+
+            if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                $location.path('/');
+            }
+        });
+    }]);
