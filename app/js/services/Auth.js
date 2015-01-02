@@ -1,4 +1,4 @@
-adsApp.factory('Auth', function($cookies, $cookieStore, $rootScope){
+adsApp.factory('Auth', function($cookies, $cookieStore, $rootScope, $location){
     return {
         setCredentials : function(data){
             $rootScope.globals = {
@@ -14,6 +14,7 @@ adsApp.factory('Auth', function($cookies, $cookieStore, $rootScope){
         clearCredentials : function(){
             $rootScope.globals = {};
             $cookieStore.remove('globals');
+            $location.path('/');
         }
     }
 })
