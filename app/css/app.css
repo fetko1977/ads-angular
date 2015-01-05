@@ -15,15 +15,14 @@ img {/*---Make image responsive by default----------------*/
 .ads-left-aside a {
     display: block;
     margin: 1% auto;
-    width: 50%;
 }
 
 /*-----------Styling for li element containing add entry----------------------------*/
-.list-softuniads {
+ul.list-softuniads {
     list-style: none;
 }
 
-.sofuniads-entry {
+ul.list-softuniads li {
     background: #bf3e11;
     margin: 1% 0;
     color: #ffffff;
@@ -34,7 +33,7 @@ img {/*---Make image responsive by default----------------*/
     box-shadow:  1px 1px 3px black;
 }
 
-.sofuniads-entry h3 {
+ul.list-softuniads li h3 {
     margin: 0 0 1% 0;
 }
 
@@ -51,4 +50,11 @@ img {/*---Make image responsive by default----------------*/
 .current-user-msg {
     color: #ffffff;
     padding: 1% 0 0 0;
+}
+
+/*----------------User Notification Styling-------------------------------*/
+
+#notification-msg {
+    text-align: center;
+    margin: 0 auto;
 }

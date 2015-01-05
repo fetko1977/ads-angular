@@ -16,9 +16,24 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPa
                 templateUrl:'templates/register.html'
             }
         );
-        $routeProvider.when('/user',
+        $routeProvider.when('/user/home',
             {
                 templateUrl:'templates/userhome.html'
+            }
+        );
+        $routeProvider.when('/user/ads',
+            {
+                templateUrl:'templates/userads.html'
+            }
+        );
+        $routeProvider.when('/user/publish',
+            {
+                templateUrl:'templates/userpublish.html'
+            }
+        );
+        $routeProvider.when('/user/editprofile',
+            {
+                templateUrl:'templates/editprofile.html'
             }
         );
         $routeProvider.otherwise({redirectTo: '/'});
@@ -36,7 +51,7 @@ adsApp.run(['$rootScope', '$location', '$cookieStore', '$http',
 
         $rootScope.$on('$locationChangeStart', function () {
 
-            if ($location.path() !== '/login' && $location.path() !== '/register' && !$rootScope.globals.currentUser) {
+            if ($location.path() !== '/login' && $location.path() !== '/register' && $location.path() !== '/' && !$rootScope.globals.currentUser) {
                 $location.path('/');
             }
         });

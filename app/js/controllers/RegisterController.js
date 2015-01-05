@@ -23,7 +23,7 @@ adsApp.controller('RegisterController', function($scope, MainData, RegisterData,
         RegisterData.register(function($resp){
             $scope.data = $resp;
             Auth.setCredentials($scope.data);
-            $location.path('/user');
+            $location.path('/user/home');
         }, user);
     }
 });

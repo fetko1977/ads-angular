@@ -1,4 +1,4 @@
-adsApp.controller('MainController', function($scope, MainData, $rootScope, Auth){
+adsApp.controller('MainController', function($scope, MainData, $rootScope, Auth, UserData){
 
     //Pagination starts here
     var pageNumber = 1;
@@ -46,21 +46,21 @@ adsApp.controller('MainController', function($scope, MainData, $rootScope, Auth)
         $scope.towns = resp;
     });
 
-    $scope.isSelectedCategory = function(element){
-        return $scope.selectedCategory === element;
-    };
+    $scope.isSelectedCategory = function(category){
+        return $scope.selectedCategory === category;
+    }
 
-    $scope.setActiveCategory = function(element){
-        $scope.selectedCategory = element;
-    };
+    $scope.setActiveCategory = function(category){
+        $scope.selectedCategory = category;
+    }
 
-    $scope.isSelectedTown = function(element){
-        return $scope.selectedTown === element;
-    };
+    $scope.isSelectedTown = function(town){
+        return $scope.selectedTown === town;
+    }
 
-    $scope.setActiveTown = function(element){
-        $scope.selectedTown = element;
-    };
+    $scope.setActiveTown = function(town){
+        $scope.selectedTown = town;
+    }
 
     $rootScope.isLoggedIn = function (){
         if(!$rootScope.globals.currentUser){

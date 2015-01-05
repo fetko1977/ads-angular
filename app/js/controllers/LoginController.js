@@ -1,4 +1,4 @@
-adsApp.controller('LoginController', function($scope, LoginData, Auth, $location){
+adsApp.controller('LoginController', function($scope, $rootScope, LoginData, Auth, $location, toaster){
     var user;
 
     $scope.loginUser = function(userObj){
@@ -9,8 +9,10 @@ adsApp.controller('LoginController', function($scope, LoginData, Auth, $location
 
         LoginData.login(function($resp){
             $scope.data = $resp;
+            var username = $scope.data.username;
             Auth.setCredentials($scope.data);
-            $location.path('/user');
+            $rootScope.$broadcast('userSuccessfullyLoggedIn', username);
+            $location.path('/user/home');
         }, user);
     }
 });
