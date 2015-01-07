@@ -21,8 +21,9 @@
             <div class="panel-heading">
                 <h3 class="panel-title">My Ads</h3>
             </div>
-            <div class="panel-body" ng-repeat="st in statusAd">
-                <a ng-click="showMe(st)">{{st}}</a>
+            <div class="panel-body" ng-class="{active : isSelectedStatus(st)}"ng-click="getStatusAds(st); setActiveStatus(st)">All</div>
+            <div class="panel-body" ng-repeat="st in statusAd" ng-class="{active : isSelectedStatus(st)}" ng-click="getStatusAds(st); setActiveStatus(st)">
+                {{st}}
             </div>
         </div>
     </div>
@@ -56,8 +57,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        Status:<br>{{ ad.status }}
+                    <div class="col-md-3 ads-entry-control">
+                        <h5>Status:</h5>
+                        <p>{{ ad.status }}</p>
+                        <div class="row">
+                            <button class="btn btn-danger" ng-click="deactivateAd(ad.id);" ng-if="checkStatus(ad.status, 'Deactivate')">Deactivate</button>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-warning" ng-href="#/user/ads/edit/{{ad.id}}" ng-if="checkStatus(ad.status, 'Edit')">Edit</a>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-success" ng-click="publishAdAagain(ad.id);" ng-if="checkStatus(ad.status, 'PublishAgain')">Publish Again</button>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-danger" ng-href="#/user/ads/delete/{{ad.id}}" ng-if="checkStatus(ad.status, 'Delete')">Delete</a>
+                        </div>
                     </div>
                 </div>
             </li>

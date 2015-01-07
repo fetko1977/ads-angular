@@ -1,4 +1,4 @@
-adsApp.factory('LoginData', function($http, $log, $rootScope, $location){
+adsApp.factory('LoginData', function($http, Notifications){
     return {
         login : function ($success, user) {
             var url = 'http://softuni-ads.azurewebsites.net/api/user/login';
@@ -8,7 +8,7 @@ adsApp.factory('LoginData', function($http, $log, $rootScope, $location){
                     $success(data);
                 }).
                 error(function(data) {
-                    $log.warn(data);
+                    Notifications.errorMsg(data.error_description);
                 });
         }
     }

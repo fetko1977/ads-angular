@@ -1,0 +1,83 @@
+<div class="row" ng-controller="UserController">
+    <div class="col-md-2 ads-left-aside">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Navigation</h3>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/home" ng-click="">Home</a>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/ads">My Ads</a>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/publish">Publish New Ad</a>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/editprofile">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <form class="form-horizontal form-ad-handler" name="EditAdForm">
+        <fieldset>
+            <legend>Edit Ad</legend>
+                <div class="col-lg-10">
+                    <div class="form-group">
+                        <label for="title" class="col-lg-2 control-label">Title:</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="title" placeholder="Title" ng-model="editAd.title" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="text" class="col-lg-2 control-label">Text:</label>
+                        <div class="col-lg-10">
+                            <textarea class="col-lg-7" id="text" ng-model="adData.text" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-lg-2 control-label">Image:</label>
+                        <div class="col-lg-6">
+                            <input type="file" class="form-control" id="image" onchange="angular.element(this).scope().fileSelected(this)" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category" class="col-lg-2 control-label">Category:</label>
+                        <div class="col-lg-6">
+                            <select id="category" class="form-control" ng-model="adData.categoryId">
+                                <option value="null">(None)</option>
+                                <option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="town" class="col-lg-2 control-label">Town:</label>
+                        <div class="col-lg-6">
+                            <select id="town" class="form-control" ng-model="adData.townId">
+                                <option value="null">(None)</option>
+                                <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary" ng-click="">Publish</button>
+                            <a href="#/user/ads" class="pull-right">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="image-box">
+                        <p>Image Preview</p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="">Change image</button>
+                        <button class="btn btn-danger">Delete image</button>
+                    </div>
+                </div>
+        </fieldset>
+    </form>
+    </div>
+</div>
+
+style="float: left; width: 350px; height: auto; margin-right: 10px"

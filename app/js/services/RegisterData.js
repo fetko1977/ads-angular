@@ -1,4 +1,4 @@
-adsApp.factory('RegisterData', function($http, $log){
+adsApp.factory('RegisterData', function($http, Notifications){
     return {
         register : function ($success, user) {
             var url = 'http://softuni-ads.azurewebsites.net/api/user/register';
@@ -7,7 +7,7 @@ adsApp.factory('RegisterData', function($http, $log){
                     $success(data);
                 }).
                 error(function(data) {
-                    $log.warn(data);
+                    Notifications.errorMsg(data.error_description);
                 });
         }
     }

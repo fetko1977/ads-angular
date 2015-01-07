@@ -1,4 +1,4 @@
-adsApp.controller('RegisterController', function($scope, MainData, RegisterData, Auth, $location){
+adsApp.controller('RegisterController', function($scope, MainData, RegisterData, Auth, $location, Notifications){
     var user;
 
     // Getting the towns for the register form select
@@ -22,7 +22,10 @@ adsApp.controller('RegisterController', function($scope, MainData, RegisterData,
 
         RegisterData.register(function($resp){
             $scope.data = $resp;
+            console.log($resp);
+            var msg = 'Welcome to our website' + $scope.data.username + '!';
             Auth.setCredentials($scope.data);
+            Notifications.successMsg(msg);
             $location.path('/user/home');
         }, user);
     }

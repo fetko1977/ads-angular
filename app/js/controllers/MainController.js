@@ -1,4 +1,4 @@
-adsApp.controller('MainController', function($scope, MainData, $rootScope, Auth, UserData){
+adsApp.controller('MainController', function($scope, MainData, $rootScope, Auth, Notifications){
 
     //Pagination starts here
     var pageNumber = 1;
@@ -72,5 +72,6 @@ adsApp.controller('MainController', function($scope, MainData, $rootScope, Auth,
 
     $rootScope.logoutUser = function(){
         Auth.clearCredentials();
+        Notifications.successMsg('You logout successfully!');
     }
 });

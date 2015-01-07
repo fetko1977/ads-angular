@@ -8,12 +8,14 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPa
         );
         $routeProvider.when('/login',
             {
-                templateUrl:'templates/login.html'
+                templateUrl:'templates/login.html',
+                controller: 'LoginController'
             }
         );
         $routeProvider.when('/register',
             {
-                templateUrl:'templates/register.html'
+                templateUrl:'templates/register.html',
+                controller: 'RegisterController'
             }
         );
         $routeProvider.when('/user/home',
@@ -24,6 +26,16 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPa
         $routeProvider.when('/user/ads',
             {
                 templateUrl:'templates/userads.html'
+            }
+        );
+        $routeProvider.when('/user/ads/delete/:singleAdId',
+            {
+                templateUrl:'templates/user-delete-ad.html'
+            }
+        );
+        $routeProvider.when('/user/ads/edit/:singleAdId',
+            {
+                templateUrl:'templates/user-edit-ad.html'
             }
         );
         $routeProvider.when('/user/publish',

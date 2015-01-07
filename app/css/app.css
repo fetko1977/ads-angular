@@ -22,9 +22,9 @@ ul.list-softuniads {
     list-style: none;
 }
 
-ul.list-softuniads li {
-    background: #bf3e11;
-    margin: 1% 0;
+ul.list-softuniads li, div.single-entry {
+    background: darkslategray;
+    margin: 1% auto;
     color: #ffffff;
     padding: 1%;
     border: solid 2px black;
@@ -52,9 +52,37 @@ ul.list-softuniads li h3 {
     padding: 1% 0 0 0;
 }
 
-/*----------------User Notification Styling-------------------------------*/
+/*----------------Ads Entry Side Control-------------------------------*/
+.ads-entry-control {
+    border-left: solid 2px #ffffff;
 
-#notification-msg {
-    text-align: center;
-    margin: 0 auto;
+}
+
+.ads-entry-control button, .ads-entry-control a {
+    margin: 1%;
+    box-shadow: 1px 1px 3px black;
+    -moz-box-shadow: 1px 1px 3px black;
+    -webkit-box-shadow: 1px 1px 3px black;
+}
+
+/*----------------- Ads single entry styling---------------------------*/
+
+div.single-entry button, div.single-entry a {
+    margin: 1%;
+}
+
+/*--------------Forms Styling-------------------------------------------*/
+
+.form-ad-handler {
+    background: darkslategray;
+    color: #ffffff;
+}
+
+.form-ad-handler legend {
+    color: #ffffff;
+    padding: 1%;
+}
+
+.form-ad-handler button {
+    margin: 1% 0;
 }

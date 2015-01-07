@@ -1,0 +1,45 @@
+<div class="row" ng-controller="UserController">
+    <div class="col-md-2 ads-left-aside">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Navigation</h3>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/home" ng-click="">Home</a>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/ads">My Ads</a>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/publish">Publish New Ad</a>
+            </div>
+            <div class="panel-body">
+                <a href="#/user/editprofile">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 single-entry">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>{{singleAdEntry.title}}</h3>
+            </div>
+            <div class="col-md-6">
+                <p class="text-right">{{singleAdEntry.date | date: 'd-MMM-yyyy'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="./img/no-image.png" ng-src="{{singleAdEntry.imageDataUrl}}" />
+            </div>
+            <div class="col-md-8">
+                 <div class="col-md-12">
+                    {{singleAdEntry.text}}
+                </div>
+            </div>
+        </div>
+        <div class="row text-right">
+                <button class="btn btn-success" ng-click="deleteAd(singleAdEntry.id)">Delete</button>
+                <a class="btn btn-danger" ng-href="#/user/ads">Cancel</a>
+        </div>
+    </div>
+</div>

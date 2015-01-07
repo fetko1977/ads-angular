@@ -1,4 +1,4 @@
-adsApp.factory('MainData', function($http, $log){
+adsApp.factory('MainData', function($http, Notifications){
     return {
         getAllAds : function(success, pageNumber, categoryId, townId){
             var adsUrl = 'http://softuni-ads.azurewebsites.net/api/ads?pagesize=10&startpage=' + pageNumber;
@@ -15,7 +15,7 @@ adsApp.factory('MainData', function($http, $log){
                     success(data);
                 }).
                 error(function(data) {
-                    $log.warn(data);
+                    Notifications.errorMsg(data.error_description);
                 });
         },
         getCategories : function(success){
@@ -24,7 +24,7 @@ adsApp.factory('MainData', function($http, $log){
                     success(data);
                 }).
                 error(function(data) {
-                    $log.warn(data);
+                    Notifications.errorMsg(data.error_description);
                 });
         },
         getTowns : function(success){
@@ -33,7 +33,7 @@ adsApp.factory('MainData', function($http, $log){
                     success(data);
                 }).
                 error(function(data) {
-                    $log.warn(data);
+                    Notifications.errorMsg(data.error_description);
                 });
         }
     }
