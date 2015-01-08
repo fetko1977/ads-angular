@@ -56,7 +56,7 @@ adsApp.config(function(paginationTemplateProvider) {
     paginationTemplateProvider.setPath('templates/dirPagination.tpl.html');
 });
 
-adsApp.run(['$rootScope', '$location', '$cookieStore', '$http',
+adsApp.run(['$rootScope', '$location', '$cookieStore',
     function ($rootScope, $location, $cookieStore) {
         // keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};
