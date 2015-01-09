@@ -86,3 +86,7 @@ div.single-entry button, div.single-entry a {
 .form-ad-handler button {
     margin: 1% 0;
 }
+
+.form-ad-handler input, .form-ad-handler textarea {
+    color: darkslategray;
+}

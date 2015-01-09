@@ -1,4 +1,4 @@
-adsApp.controller('MainController', function($scope, MainData, $rootScope, Auth, Notifications){
+adsApp.controller('MainCtrl', function($scope, MainData, $rootScope, Auth, Notifications){
 
     //Pagination starts here
     var pageNumber = 1;

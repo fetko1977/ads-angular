@@ -26,25 +26,25 @@
                     <div class="form-group">
                         <label for="title" class="col-lg-2 control-label">Title:</label>
                         <div class="col-lg-6">
-                            <input type="text" class="form-control" id="title" placeholder="Title" ng-model="editAd.title" required />
+                            <input type="text" class="form-control" id="title" ng-model="currentAdEntry.title" required />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="text" class="col-lg-2 control-label">Text:</label>
                         <div class="col-lg-10">
-                            <textarea class="col-lg-7" id="text" ng-model="adData.text" required></textarea>
+                            <textarea class="col-lg-7" id="text" ng-model="currentAdEntry.text" required></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="image" class="col-lg-2 control-label">Image:</label>
                         <div class="col-lg-6">
-                            <input type="file" class="form-control" id="image" onchange="angular.element(this).scope().fileSelected(this)" />
+                            <input type="file" class="form-control" id="image" ng-model="currentAdEntry.imageDataUrl" onchange="angular.element(this).scope().fileSelected(this)" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="category" class="col-lg-2 control-label">Category:</label>
                         <div class="col-lg-6">
-                            <select id="category" class="form-control" ng-model="adData.categoryId">
+                            <select id="category" class="form-control" ng-model="currentAdEntry.categoryId">
                                 <option value="null">(None)</option>
                                 <option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
                             </select>
@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="town" class="col-lg-2 control-label">Town:</label>
                         <div class="col-lg-6">
-                            <select id="town" class="form-control" ng-model="adData.townId">
+                            <select id="town" class="form-control" ng-model="currentAdEntry.townId">
                                 <option value="null">(None)</option>
                                 <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
                             </select>
@@ -61,18 +61,18 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-6 col-lg-offset-2">
-                            <button type="submit" class="btn btn-primary" ng-click="">Publish</button>
+                            <button type="submit" class="btn btn-primary" ng-click="editAd(currentAdEntry, EditAdForm)">Edit</button>
                             <a href="#/user/ads" class="pull-right">Cancel</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="image-box">
-                        <p>Image Preview</p>
+                        <img src="./img/no-image.png" ng-src="{{ currentAdEntry.imageDataUrl }}" />
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" ng-click="">Change image</button>
-                        <button class="btn btn-danger">Delete image</button>
+                        <button class="btn btn-primary" ng-click="changeImage()">Change image</button>
+                        <button class="btn btn-danger" ng-click="deleteImage(adData.imageDataUrl)">Delete image</button>
                     </div>
                 </div>
         </fieldset>

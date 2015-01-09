@@ -3,19 +3,19 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'angularUtils.directives.dirPa
         $routeProvider.when('/',
             {
                 templateUrl:'templates/all-ads.html',
-                controller: 'MainController'
+                controller: 'MainCtrl'
             }
         );
         $routeProvider.when('/login',
             {
                 templateUrl:'templates/login.html',
-                controller: 'LoginController'
+                controller: 'LoginCtrl'
             }
         );
         $routeProvider.when('/register',
             {
                 templateUrl:'templates/register.html',
-                controller: 'RegisterController'
+                controller: 'RegisterCtrl'
             }
         );
         $routeProvider.when('/user/home',

@@ -1,30 +1,31 @@
 adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, MainData, Notifications, $route, $routeParams){
 
-    //Pagination starts here
+    //Pagination settings starts here
     var pageNumber = 1;
-    var categoryId, townId;
+
+    // Empty array to store asd retrieved from the database later
     $scope.ads = [];
     $scope.totalAds = 0;
-    $scope.adsPerPage = 10; // this should match however many results your API puts on one page
+    $scope.adsPerPage = 10;
+    $scope.currentStatusFilter;
+
+    $scope.statusAd = ['Inactive', 'WaitingApproval', 'Published', 'Rejected'];
 
     UserData.getAllUserAds(function(resp){
         $scope.data = resp;
         $scope.ads = $scope.data.ads;
-        $scope.totalAds = $scope.data.numItems
-    }, pageNumber);
-
-    $scope.statusAd = ['Inactive', 'WaitingApproval', 'Published', 'Rejected'];
+        $scope.totalAds = $scope.data.numItems;
+    }, pageNumber, $scope.currentStatusFilter);
 
     $scope.getStatusAds = function(status){
-
-        UserData.getUserAdsByStatus(function($resp){
-            $scope.data = $resp;
+        $scope.currentStatusFilter = status;
+        UserData.getAllUserAds(function(resp){
+            $scope.data = resp;
             if($scope.data.ads.length === 0){
                 Notifications.warningMsg('There is not ads with status of ' + status + '!');
             }
-        },pageNumber, status)
-    }
-
+        }, pageNumber, $scope.currentStatusFilter);
+    };
 
     $scope.pagination = {
         current: 1
@@ -33,7 +34,7 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
     $scope.pageChanged = function(newPage) {
         UserData.getAllUserAds(function(resp){
             $scope.data = resp;
-        }, newPage);
+        }, newPage, $scope.currentStatusFilter);
     };
 
     MainData.getCategories(function(resp){
@@ -149,14 +150,36 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
         singleAdId: $routeParams.singleAdId
     }
 
-    // Calling a single ad here for delete or edit
-    var deleteUrl = '/user/ads/delete/' + $scope.model.singleAdId;
-    var editUrl = '/user/ads/edit/' + $scope.model.singleAdId;
-
-    if($location.path() === (deleteUrl || editUrl)){
+    $scope.getCurrentAd = function(id){
         UserData.getAdById(function($resp){
-            $scope.singleAdEntry = $resp;
-        }, $scope.model.singleAdId);
+            $rootScope.currentAdEntry = $resp;
+        }, id);
+    };
+
+    $rootScope.isChangedImage = false;
+
+    $scope.changeImage = function(){
+            $rootScope.isChangedImage = true;
+    };
+
+    $scope.deleteImage = function(image){
+        delete image;
+    };
+
+    $scope.editAd = function(ad){
+
+        var dataAd = {
+            "title" : ad.title,
+            "text" : ad.text,
+            "changeImage" : $rootScope.isChangedImage,
+            "imageDataUrl" : ad.imageDataUrl,
+            "categoryId" : ad.categoryId,
+            "townId" : ad.townId
+        };
+
+        UserData.edit(function($resp){
+            Notifications.successMsg($resp);
+        }, dataAd, $scope.model.singleAdId);
     }
 
     $scope.deleteAd = function (id) {
@@ -164,6 +187,6 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
             $location.path('/user/ads');
             Notifications.successMsg($resp.message);
         }, id);
-    }
+    };
 
 });

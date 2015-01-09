@@ -1,4 +1,4 @@
-adsApp.controller('RegisterController', function($scope, MainData, RegisterData, Auth, $location, Notifications){
+adsApp.controller('RegisterCtrl', function($scope, MainData, RegisterData, Auth, $location, Notifications){
     var user;
 
     // Getting the towns for the register form select

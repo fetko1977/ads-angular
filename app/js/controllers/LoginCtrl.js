@@ -1,4 +1,4 @@
-adsApp.controller('LoginController', function($scope, $rootScope, LoginData, Auth, $location, Notifications){
+adsApp.controller('LoginCtrl', function($scope, $rootScope, LoginData, Auth, $location, Notifications){
     var user;
 
     $scope.loginUser = function(userObj){
