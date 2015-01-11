@@ -78,7 +78,7 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
             var reader = new FileReader();
             reader.onload = function() {
                 $scope.adData.imageDataUrl = reader.result;
-                angular.element(document.querySelector('.image-box')).html("<img src='" + reader.result + "' width='100px' height='auto'>");
+                angular.element(document.querySelector('.image-box')).html("<img src='" + reader.result + "' width='150px' height='auto'>");
             };
             reader.readAsDataURL(file);
         } else {
@@ -144,18 +144,6 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
         }, id);
     };
 
-    // Setting $routeParams.id passed
-
-    $scope.model = {
-        singleAdId: $routeParams.singleAdId
-    }
-
-    $scope.getCurrentAd = function(id){
-        UserData.getAdById(function($resp){
-            $rootScope.currentAdEntry = $resp;
-        }, id);
-    };
-
     $rootScope.isChangedImage = false;
 
     $scope.changeImage = function(){
@@ -168,25 +156,9 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
 
     $scope.editAd = function(ad){
 
-        var dataAd = {
-            "title" : ad.title,
-            "text" : ad.text,
-            "changeImage" : $rootScope.isChangedImage,
-            "imageDataUrl" : ad.imageDataUrl,
-            "categoryId" : ad.categoryId,
-            "townId" : ad.townId
-        };
-
-        UserData.edit(function($resp){
+        /*UserData.edit(function($resp){
             Notifications.successMsg($resp);
-        }, dataAd, $scope.model.singleAdId);
-    }
-
-    $scope.deleteAd = function (id) {
-        UserData.delete(function($resp) {
-            $location.path('/user/ads');
-            Notifications.successMsg($resp.message);
-        }, id);
+        }, dataAd, $scope.model.singleAdId);*/
     };
 
 });
