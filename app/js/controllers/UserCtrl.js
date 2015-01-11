@@ -9,13 +9,19 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
     $scope.adsPerPage = 10;
     $scope.currentStatusFilter;
 
+    // Array with Ad Statuses
+
     $scope.statusAd = ['Inactive', 'WaitingApproval', 'Published', 'Rejected'];
+
+    // Getting all user Ads
 
     UserData.getAllUserAds(function(resp){
         $scope.data = resp;
         $scope.ads = $scope.data.ads;
         $scope.totalAds = $scope.data.numItems;
     }, pageNumber, $scope.currentStatusFilter);
+
+    // Get Ads filtered by status
 
     $scope.getStatusAds = function(status){
         $scope.currentStatusFilter = status;
@@ -26,6 +32,8 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
             }
         }, pageNumber, $scope.currentStatusFilter);
     };
+
+    // Setting a current page to 1 for the pagination
 
     $scope.pagination = {
         current: 1
@@ -100,6 +108,8 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
         }, id);
     }
 
+    // Checking Ad status for displaying or hiding the appropriate buttons
+
     $scope.checkStatus = function(status, button){
         switch (status){
             case 'Inactive' : switch (button){
@@ -137,28 +147,13 @@ adsApp.controller('UserCtrl', function($scope, $rootScope, $location, UserData, 
         }
     };
 
-    $scope.publishAdAagain = function(id){
+    // Publishing inactive ad again and giving it status of WaitingApproval
+
+    $scope.publishAdAgain = function(id){
         UserData.publishAgain(function($resp){
             $route.reload('/user/ads');
             Notifications.successMsg($resp.message);
         }, id);
-    };
-
-    $rootScope.isChangedImage = false;
-
-    $scope.changeImage = function(){
-            $rootScope.isChangedImage = true;
-    };
-
-    $scope.deleteImage = function(image){
-        delete image;
-    };
-
-    $scope.editAd = function(ad){
-
-        /*UserData.edit(function($resp){
-            Notifications.successMsg($resp);
-        }, dataAd, $scope.model.singleAdId);*/
     };
 
 });

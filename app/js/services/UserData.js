@@ -85,6 +85,30 @@ adsApp.factory('UserData', function($http, Notifications, $rootScope){
                 .error(function(data){
                     Notifications.errorMsg(data.error_description);
                 });
+        },
+
+        getUserProfile: function(success){
+            var url = 'http://softuni-ads.azurewebsites.net/api/user/profile';
+            var currentUserToken = $rootScope.globals.currentUser.access_token;
+            $http({method: 'GET', url: url, headers: {Authorization: 'Bearer ' + currentUserToken}})
+                .success(function(data){
+                    success(data);
+                })
+                .error(function(data){
+                    Notifications.errorMsg(data.error_description);
+                });
+        },
+
+        editUserProfile: function(success, user){
+            var url = 'http://softuni-ads.azurewebsites.net/api/user/profile';
+            var currentUserToken = $rootScope.globals.currentUser.access_token;
+            $http({method: 'PUT', url: url, headers: {Authorization: 'Bearer ' + currentUserToken}, data: user})
+                .success(function(data){
+                    success(data);
+                })
+                .error(function(data){
+                    Notifications.errorMsg(data.error_description);
+                });
         }
     }
 });

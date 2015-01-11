@@ -1,0 +1,73 @@
+<div class="row"></div>
+        <div class="col-md-6">
+            <form class="form-horizontal" ng-controller="EditProfileCtrl" name="EditProfileForm">
+                <fieldset>
+                    <legend>Edit Profile</legend>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">Name:</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="name" ng-model="editProfile.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-lg-2 control-label">Email:</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="email" ng-model="editProfile.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-lg-2 control-label">Phone:</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="phone" ng-model="editProfile.phoneNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="town" class="col-lg-2 control-label">Town:</label>
+                        <div class="col-lg-6">
+                            <select id="town" class="form-control" ng-model="editProfile.townId">
+                                <option value="null">(None)</option>
+                                <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary" ng-click="editCurrentProfile(editProfile, EditProfileForm)">Edit Profile</button>
+                            <a class="btn btn-primary" href="#/user/home" class="pull-right">Cancel</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-horizontal" ng-controller="ChangePasswordCtrl" name="ChangePasswordForm">
+                <fieldset>
+                    <legend>Change Password</legend>
+                    <div class="form-group">
+                        <label for="password" class="col-lg-6 control-label">Old Password:</label>
+                        <div class="col-lg-6">
+                            <input type="password" class="form-control" id="password" placeholder="Old Password" ng-model="PasswordData.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password" class="col-lg-6 control-label">New Password:</label>
+                        <div class="col-lg-6">
+                            <input type="password" class="form-control" id="new-password" placeholder="New Password" ng-model="PasswordData.newPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password-again" class="col-lg-6 control-label">Repeat New Password:</label>
+                        <div class="col-lg-6">
+                            <input type="password" class="form-control" id="new-password-again" placeholder="Repeat New Password" ng-model="PasswordData.newPasswordAgain">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary" ng-click="changePassword(PasswordData, ChangePasswordForm)">ChangePassword</button>
+                            <a href="#/user/home" class="pull-right">Cancel</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+</div>
