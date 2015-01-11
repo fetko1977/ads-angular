@@ -12,7 +12,7 @@ adsApp.controller('MainCtrl', function($scope, MainData, $rootScope, Auth, Notif
         $scope.data = resp;
         $scope.ads = $scope.data.ads;
         $scope.totalAds = $scope.data.numItems
-    }, pageNumber);
+    }, pageNumber, categoryId, townId);
 
     $scope.pagination = {
         current: 1
@@ -21,13 +21,15 @@ adsApp.controller('MainCtrl', function($scope, MainData, $rootScope, Auth, Notif
     $scope.pageChanged = function(newPage) {
         MainData.getAllAds(function(resp){
             $scope.data = resp;
-        }, newPage);
+            $scope.ads = $scope.data.ads;
+        }, newPage, categoryId, townId);
     };
 
     $scope.filterByCategory = function(id) {
         categoryId = id;
         MainData.getAllAds(function(resp){
             $scope.data = resp;
+            $scope.ads = $scope.data.ads;
         }, pageNumber, categoryId, townId);
     };
 
@@ -35,6 +37,7 @@ adsApp.controller('MainCtrl', function($scope, MainData, $rootScope, Auth, Notif
         townId = id;
         MainData.getAllAds(function(resp){
             $scope.data = resp;
+            $scope.ads = $scope.data.ads;
         }, pageNumber, categoryId, townId);
     };
 

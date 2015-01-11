@@ -23,7 +23,7 @@ adsApp.controller('RegisterCtrl', function($scope, MainData, RegisterData, Auth,
         RegisterData.register(function($resp){
             $scope.data = $resp;
             console.log($resp);
-            var msg = 'Welcome to our website' + $scope.data.username + '!';
+            var msg = 'Welcome to our website ' + $scope.data.username + '!';
             Auth.setCredentials($scope.data);
             Notifications.successMsg(msg);
             $location.path('/user/home');
