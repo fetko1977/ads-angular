@@ -6,13 +6,12 @@ adsApp.controller('EditProfileCtrl', ['$scope', 'UserData', 'MainData', 'Notific
 
     UserData.getUserProfile(function($resp){
         $scope.editProfile = $resp;
-        return  $scope.editProfile;
     });
 
     $scope.editCurrentProfile = function(user){
         UserData.editUserProfile(function($resp){
             Notifications.successMsg($resp.message);
             $location.path('/user/home');
-        },  $scope.editProfile);
+        }, user);
     }
 }]);
