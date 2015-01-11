@@ -1,4 +1,4 @@
-adsApp.controller('ChangePasswordCtrl', ['$scope', 'UserData', 'Notifications', function($scope, UserData, Notifications){
+adsApp.controller('ChangePasswordCtrl', ['$scope', 'UserData', 'Notifications', '$location', function($scope, UserData, Notifications, $location){
     $scope.changePassword = function(user){
         var passwordData = {
             oldPassword : user.password,
@@ -8,6 +8,7 @@ adsApp.controller('ChangePasswordCtrl', ['$scope', 'UserData', 'Notifications', 
 
         UserData.changeUserPassword(function($resp){
             Notifications.successMsg($resp.message)
-        }, user);
+            $location.path('/user/home');
+        }, passwordData);
     }
 }]);
