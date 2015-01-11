@@ -107,7 +107,19 @@ adsApp.factory('UserData', function($http, Notifications, $rootScope){
                     success(data);
                 })
                 .error(function(data){
-                    Notifications.errorMsg(data.error_description);
+                    Notifications.errorMsg(data.message);
+                });
+        },
+
+        changeUserPassword: function(success, user){
+            var url = 'http://softuni-ads.azurewebsites.net/api/user/changePassword';
+            var currentUserToken = $rootScope.globals.currentUser.access_token;
+            $http({method: 'PUT', url: url, headers: {Authorization: 'Bearer ' + currentUserToken}, data: user})
+                .success(function(data){
+                    success(data);
+                })
+                .error(function(data){
+                    Notifications.errorMsg(data.message);
                 });
         }
     }
