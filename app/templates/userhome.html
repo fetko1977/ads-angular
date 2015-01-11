@@ -20,7 +20,7 @@
     </div>
     <div class="col-md-8">
         <ul class="list-softuniads">
-            <li dir-paginate="ad in data.ads | itemsPerPage: 10" total-items="totalAds" class="sofuniads-entry">
+            <li dir-paginate="ad in ads | itemsPerPage: 10" total-items="totalAds" class="sofuniads-entry">
                     <div class="row">
                         <div class="col-md-6">
                             <h3>{{ ad.title }}</h3>
